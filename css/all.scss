@@ -1,0 +1,10 @@
+@import "reset.scss";
+body{
+	background:{
+		image: url(../img/bg.jpg);
+		size:cover;
+		attachment: fixed;
+		repeat: no-repeat;
+		position:left top;
+	}
+}

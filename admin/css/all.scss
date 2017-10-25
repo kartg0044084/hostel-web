@@ -1,0 +1,138 @@
+@import "bootstrap.min.scss";
+@import "nav.scss";
+@import "reset.scss";
+@import "style.scss";
+
+@inport url(https://fonts.googleapis.com/css?family=Ubuntu);
+$font-family: 'Ubuntu', sans-serif;
+$CHfont-family:Microsoft JhengHei;
+$width: 100%;
+///////////////////////////////// nav.scss////////////////////////////////
+span{
+	font-size: 10px;
+	color: rgb(111, 111, 111);
+	font-family: $CHfont-family;
+}
+///////////////////////////////// all.scss////////////////////////////////
+body{
+	background-color: rgb(237, 237, 238);
+}
+.top{
+	display: block;
+	background-color: rgb(45, 192, 168);
+	width: $width;
+	height: 50px;
+	p{
+		text-align: right;
+		font-family: $font-family;
+		color: #fff;
+		line-height:50px;
+	}
+}
+
+.theme{
+	display: block;
+	width: $width;
+	background-color: rgb(44, 180, 160);
+	height: 132px;
+	div{
+		max-width: 1137px;
+		width: $width;
+		margin:0px auto;
+		p{
+			font-family: $font-family;
+			color: #fff;
+			font-size: 25px;
+			text-shadow:0px 0px 5px rgb(0,0,0);
+			a{
+				background-color: rgb(151, 197, 249);
+				padding: 8px 8px;
+				width:80px;
+				height:80px;
+				border-radius:99em;
+				color: #fff;
+				text-decoration:none;
+				font-size: 30px;
+				&:hover{
+					background-color:rgb(170, 170, 170);
+					transition: 0.5s;
+				}
+			}
+		}
+		h4{
+			font-family:$CHfont-family;
+			margin-top: 10px;
+			color: #fff;
+			font-size: 20px;
+			text-shadow:0px 0px 5px rgb(0,0,0);
+		}
+	}
+}
+
+#content{
+	display: block;
+	max-width: 1137px;
+	width: $width;
+	margin:0px auto 0px auto;
+	font-family: $CHfont-family,$font-family;
+	.title{
+			display: block;
+			margin:60px auto 0px auto;
+			h1{
+				font-size: 36px;
+				font-weight:bold;
+				color: rgb(102, 102, 102);
+			}
+	}
+	.breadcrumb{
+		display: block;
+		margin: 49px+29px auto 20px auto;
+		a{
+			text-decoration:none;
+		}
+	}
+	.btn-outline-secondary{
+		display: block;
+		margin-bottom: 32px;
+	}
+	table thead{
+		font-size: 18px;
+		th{
+			width: 1137px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid rgb(169, 169, 169);
+		}
+	}
+	table tbody{
+		td{
+			width: 1137px;
+			.btn-info{
+				margin-top: 10px;
+			}
+		}
+	}
+	.pagination{
+		width: 252px;
+		margin: 145px auto 55px auto;
+	}
+}
+#footer{
+	width: $width;
+	background-color: rgb(48, 156, 136);
+	div{
+		display: block;
+		max-width: 1137px;
+		width: $width;
+		margin:0px auto ;
+		color: rgb(255,255,255);
+		text-shadow: 0px 0px 10px rgb(0, 0, 0);
+		h2{
+				font-size: 36px;
+				padding: 63px 0px 14px 0px;
+		}
+		p{
+				font-size: 14px;
+				padding-bottom: 50px;
+		}
+	}
+}
