@@ -9523,8 +9523,8 @@ img {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("fonts/icomoon.eot?nxa197");
-  src: url("fonts/icomoon.eot?nxa197#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?nxa197") format("truetype"), url("fonts/icomoon.woff?nxa197") format("woff"), url("fonts/icomoon.svg?nxa197#icomoon") format("svg");
+  src: url("fonts/icomoon.eot?yk5sc2");
+  src: url("fonts/icomoon.eot?yk5sc2#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?yk5sc2") format("truetype"), url("fonts/icomoon.woff?yk5sc2") format("woff"), url("fonts/icomoon.svg?yk5sc2#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -9542,32 +9542,8 @@ img {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-bullhorn:before {
-  content: "\e91a";
-}
-
-.icon-file-text2:before {
-  content: "\e926";
-}
-
-.icon-user:before {
-  content: "\e971";
-}
-
-.icon-cog:before {
-  content: "\e994";
-}
-
-.icon-accessibility:before {
-  content: "\e9b2";
-}
-
-.icon-download2:before {
-  content: "\e9c5";
-}
-
-.icon-earth:before {
-  content: "\e9ca";
+.icon-profile-male:before {
+  content: "\e900";
 }
 
 @inport url(https://fonts.googleapis.com/css?family=Ubuntu);
@@ -9657,7 +9633,6 @@ body {
   text-decoration: none;
 }
 #content .btn-outline-secondary {
-  display: block;
   margin-bottom: 32px;
 }
 #content table thead {

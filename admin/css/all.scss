@@ -1,7 +1,7 @@
 @import "bootstrap.min.scss";
 @import "nav.scss";
 @import "reset.scss";
-@import "style.scss";
+@import "icon.scss";
 
 @inport url(https://fonts.googleapis.com/css?family=Ubuntu);
 $font-family: 'Ubuntu', sans-serif;
@@ -92,7 +92,6 @@ body{
 		}
 	}
 	.btn-outline-secondary{
-		display: block;
 		margin-bottom: 32px;
 	}
 	table thead{
