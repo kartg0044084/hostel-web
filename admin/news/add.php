@@ -1,3 +1,17 @@
+<?php
+require_once('../../connection/database.php');
+if(isset($_POST['MM_insert']) && $_POST['MM_insert'] == "INSERT"){
+  $sql= "INSERT INTO news(publishedDate, title, content, createdDate) VALUES ( :publishedDate, :title, :content, :createdDate)";
+  $sth = $db ->prepare($sql);
+  $sth ->bindParam(":publishedDate", $_POST['publishedDate'], PDO::PARAM_STR);
+  $sth ->bindParam(":title", $_POST['title'], PDO::PARAM_STR);
+  $sth ->bindParam(":content", $_POST['content'], PDO::PARAM_STR);
+  $sth ->bindParam(":createdDate", $_POST['createdDate'], PDO::PARAM_STR);
+  $sth -> execute();
+
+  header('Location: list.php');
+}
+ ?>
 <!doctype html>
 <html>
 <head>
@@ -5,7 +19,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>享樂後台系統</title>
-<link rel="stylesheet" type="text/css" href="../css/all.css">
+<?php include_once('../template/header.php'); ?>
 
 </head>
 
@@ -23,23 +37,7 @@
  		</div>
  	</div>
 
-	<header>
-	<nav class="cd-stretchy-nav">
-		<a class="cd-nav-trigger" href="#">
-			<span aria-hidden="true"></span>
-		</a>
-		<ul>
-			<li><a href="#" class="active"><span>頁面管理</span></a></li>
-			<li><a href="#"><span>最新消息管理</span></a></li>
-			<li><a href="#"><span>景點管理</span></a></li>
-			<li><a href="#"><span>訂房分類管理</span></a></li>
-			<li><a href="#"><span>訂房管理</span></a></li>
-			<li><a href="#"><span>會員管理</span></a></li>
-			<li><a href="#"><span>登出</span></a></li>
-		</ul>
-		<span aria-hidden="true" class="stretchy-nav-bg"></span>
-	</nav>
-	</header>
+	 <?php include_once('../template/nav.php'); ?>
 
 <div id="content">
 <div class="title">
@@ -95,44 +93,12 @@
 
 
 </div>
-<div id="footer">
-    <div>
-      <h2>享樂民宿</h2>
-      <p>版權所有 © 2017   ENJOY HAPPY hostel All Right Reserved.</p>
-    </div>
-</div>
+<?php include_once('../template/footer.php'); ?>
 
 
 
  </div>
 </div>
 
-
-<script src="../js/jquery-3.2.1.slim.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/all.js"></script>
-<script src="../js/modernizr.js"></script>
-<script src="../js/main.js"></script>
-<script src="../js/validator.min.js"></script>
-
-<script src="../tinymce/tinymce.min.js"></script>
-<script type="text/javascript">
-tinymce.init({
- language:'zh_TW',
- selector:'textarea',
- height:'460',
-    plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor colorpicker textpattern imagetools"
-    ],
-    toolbar1: "insertfile undo redo | formatselect fontselect fontsizeselect | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table hr pagebreak blockquote",
-    toolbar2: "bold italic underline strikethrough subscript superscript | forecolor backcolor charmap emoticons | link unlink image media | cut copy paste | insertdatetime fullscreen code",
-    menubar: false,
- image_advtab: true,
-});
-</script>
 </body>
 </html>
