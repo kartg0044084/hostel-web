@@ -1,7 +1,7 @@
 <?php
 require_once('../../connection/database.php');
-$sth=$db->query('SELECT*FROM product_category');
-$categories=$sth->fetchAll(PDO::FETCH_ASSOC);
+$sth=$db->query('SELECT*FROM attractions');
+$attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
  ?>
 <!doctype html>
 <html>
@@ -31,11 +31,11 @@ $categories=$sth->fetchAll(PDO::FETCH_ASSOC);
 
 <div id="content">
 <div class="title">
-    <h1>訂房分類管理</h1>
+    <h1>套裝行程管理</h1>
 </div>
     <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">首頁</a></li>
-    <li class="breadcrumb-item active">訂房分類管理</li>
+    <li class="breadcrumb-item active">套裝行程管理</li>
     </ol>
 
     <a href="add.php" class="btn btn-outline-secondary">新增一筆</a>
@@ -43,22 +43,24 @@ $categories=$sth->fetchAll(PDO::FETCH_ASSOC);
   <table>
     <thead>
       <tr>
-        <th>分類編號</th>
-        <th>房型名稱</th>
-        <th>分類圖片</th>
-        <th>Update</th>
+        <th>行程編號</th>
+        <th>行程名稱</th>
+        <th>行程圖片</th>
+        <th>行程價錢</th>
+        <th>行程說明</th>
         <th>刪除</th>
       </tr>
     </thead>
 
       <tbody>
-        <?php foreach($categories as $row){ ?>
+        <?php foreach($attractions as $row){ ?>
       <tr>
-        <td><?php echo $row['product_categoryID']; ?></td>
-        <td><a href="../product/list.php?product_categoryID=<?php echo $row['product_categoryID']; ?>"><?php echo $row['category']; ?></td>
-          <td><a class="fancybox" rel="group" href="../../uploads/product_category/<?php echo $row['picture']; ?>" target="_blank"><img src="../../uploads/product_category/<?php echo $row['picture']; ?>" class="img-thumbnail"/><a></td>
-        <td><a href="edit.php?product_categoryID=<?php echo $row['product_categoryID']; ?>" class="btn btn-info">Update</a></td>
-        <td><a href="delete.php?product_categoryID=<?php echo $row['product_categoryID']; ?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
+        <td><?php echo $row['attractionsID']; ?></td>
+        <td><?php echo $row['name']; ?></td>
+        <td><a class="fancybox" rel="group" href="../../uploads/attractions/<?php echo $row['picture']; ?>" target="_blank"><img src="../../uploads/attractions/<?php echo $row['picture']; ?>" class="img-thumbnail"/><a></td>
+        <td>$NT: <?php echo $row['price']; ?></td>
+        <td><?php echo $row['description']; ?></td>
+        <td><a href="delete.php?attractionsID=<?php echo $row['attractionsID']; ?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
       </tr>
       <?php } ?>
     </tbody>

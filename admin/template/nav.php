@@ -5,9 +5,8 @@
   </a>
   <ul>
     <li><a href="#" class="active"><span>頁面管理</span></a></li>
-
     <li><a href="../news/list.php"><span>最新消息管理</span></a></li>
-    <li><a href="#"><span>景點管理</span></a></li>
+    <li><a href="../attractions/list.php"><span>景點管理</span></a></li>
     <li><a href="../product_category/list.php"><span>訂房分類管理</span></a></li>
     <li><a href="#"><span>訂單管理</span></a></li>
     <li><a href="#"><span>會員管理</span></a></li>
