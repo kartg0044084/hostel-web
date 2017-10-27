@@ -1,6 +1,8 @@
 <?php
 // 完成10/26
+require_once('../template/login_check.php');
 require_once('../../connection/database.php');
+print_r($_SESSION['level']);
 $limit=4;
 // 判斷目前第幾頁，若沒有page參數就預設為1
 if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
@@ -23,16 +25,6 @@ $totalRows = count($news);
 <body>
 <div id="container">
  <div id="row">
-
- 	<div class="top">
- 		<p class="pr-4"><b>Email:</b>	kartg0044084@gmail.com    <b>Support:</b> +90-897-678-44</p>
- 	</div>
-
- 	<div class="theme">
- 		<div>
- 			<p class="pt-5"><b>Welcome to ENJOY HAPPY</b><a href="#" class="icon-profile-male  ml-4"></a></p>
- 		</div>
- 	</div>
 
 	<?php include_once('../template/nav.php'); ?>
 
@@ -64,7 +56,12 @@ $totalRows = count($news);
         <td><?php echo $row['title'] ?></td>
         <td><?php echo $row['content'] ?></td>
         <td><a href="edit.php?newsID=<?php echo $row['newsID'];?>" class="btn btn-info">Update</a></td>
+        <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?newsID=<?php echo $row['newsID'];?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};">Delete</a></td>
+      <?php }else{ ?>
+        <td><a href="#" class="btn btn-info">無法使用</a></td>
+      <?php } ?>
+
       </tr>
       <?php } ?>
     </tbody>

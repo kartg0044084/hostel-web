@@ -1,3 +1,14 @@
+<div class="top">
+  <p class="pr-4"><b>Email:</b>	kartg0044084@gmail.com    <b>Support:</b> +90-897-678-44</p>
+</div>
+
+<div class="theme">
+  <div>
+    <p class="pt-5"><b>Welcome to ENJOY HAPPY </b> <img src="../../uploads/admin/<?php echo  $_SESSION['picture']; ?>" class="ml-4" style="width:50px;"></p>
+
+    <p><?php echo  $_SESSION['name']; ?> 您好很高興為您服務</p>
+  </div>
+</div>
 <header>
 <nav class="cd-stretchy-nav">
   <a class="cd-nav-trigger" href="#">

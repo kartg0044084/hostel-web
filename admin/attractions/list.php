@@ -1,4 +1,6 @@
 <?php
+// 完成10/26
+require_once('../template/login_check.php');
 require_once('../../connection/database.php');
 $sth=$db->query('SELECT*FROM attractions');
 $attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
@@ -16,16 +18,6 @@ $attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <div id="container">
  <div id="row">
-
- 	<div class="top">
- 		<p class="pr-4"><b>Email:</b>	kartg0044084@gmail.com    <b>Support:</b> +90-897-678-44</p>
- 	</div>
-
- 	<div class="theme">
- 		<div>
- 			<p class="pt-5"><b>Welcome to ENJOY HAPPY</b><a href="#" class="icon-profile-male  ml-4"></a></p>
- 		</div>
- 	</div>
 
 	<?php include_once('../template/nav.php'); ?>
 
@@ -60,7 +52,11 @@ $attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
         <td><a class="fancybox" rel="group" href="../../uploads/attractions/<?php echo $row['picture']; ?>" target="_blank"><img src="../../uploads/attractions/<?php echo $row['picture']; ?>" class="img-thumbnail"/><a></td>
         <td>$NT: <?php echo $row['price']; ?></td>
         <td><?php echo $row['description']; ?></td>
+        <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?attractionsID=<?php echo $row['attractionsID']; ?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
+      <?php }else{ ?>
+        <td><a href="#" class="btn btn-info">無法使用</a></td>
+      <?php } ?>
       </tr>
       <?php } ?>
     </tbody>

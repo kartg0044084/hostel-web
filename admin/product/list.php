@@ -1,4 +1,6 @@
 <?php
+// 完成10/26
+require_once('../template/login_check.php');
 require_once('../../connection/database.php');
 // 方法一
 $sth=$db->query("SELECT * FROM product WHERE product_categoryID=".$_GET['product_categoryID']." ORDER BY createdDate DESC");
@@ -21,16 +23,6 @@ $totalRaws = count($products);
 <body>
 <div id="container">
  <div id="row">
-
- 	<div class="top">
- 		<p class="pr-4"><b>Email:</b>	kartg0044084@gmail.com    <b>Support:</b> +90-897-678-44</p>
- 	</div>
-
- 	<div class="theme">
- 		<div>
- 			<p class="pt-5"><b>Welcome to ENJOY HAPPY</b><a href="#" class="icon-profile-male  ml-4"></a></p>
- 		</div>
- 	</div>
 
 	<?php include_once('../template/nav.php'); ?>
 
@@ -68,7 +60,11 @@ $totalRaws = count($products);
         <td><?php echo $row['people']; ?></td>
         <td><?php echo mb_substr( $row['description'],0,30,"utf-8")."..."; ?></td>
         <td><a href="edit.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info">Update</a></td>
+        <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
+      <?php }else{ ?>
+        <td><a href="#" class="btn btn-info">無法使用</a></td>
+      <?php } ?>
         <!-- 此處容易忘記 -->
       </tr>
         <?php } ?>
