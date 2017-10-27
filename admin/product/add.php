@@ -15,14 +15,14 @@ if(isset($_FILES['picture']['name']) && $_FILES['picture']['name'] != null){
 
 if(isset($_POST['MM_insert']) && $_POST['MM_insert'] == "INSERT"){
   // 此處容易忘記
-  $sql= "INSERT INTO product(picture, name, price, room, people, description, product_categoryID) VALUES ( :picture, :name, :price, :room, :people, :description, :product_categoryID)";
+  $sql= "INSERT INTO product(picture, name, price, room, people, content, product_categoryID) VALUES ( :picture, :name, :price, :room, :people, :content, :product_categoryID)";
   $sth = $db ->prepare($sql);
   $sth ->bindParam(":picture", $filename, PDO::PARAM_STR);
   $sth ->bindParam(":name", $_POST['name'], PDO::PARAM_STR);
   $sth ->bindParam(":price", $_POST['price'], PDO::PARAM_INT);
   $sth ->bindParam(":room", $_POST['room'], PDO::PARAM_STR);
   $sth ->bindParam(":people", $_POST['people'], PDO::PARAM_STR);
-  $sth ->bindParam(":description", $_POST['description'], PDO::PARAM_STR);
+  $sth ->bindParam(":content", $_POST['content'], PDO::PARAM_STR);
   $sth ->bindParam(":product_categoryID", $_POST['product_categoryID'], PDO::PARAM_INT);
   $sth -> execute();
 
@@ -111,10 +111,10 @@ if(isset($_POST['MM_insert']) && $_POST['MM_insert'] == "INSERT"){
 
      <div class="form-group">
        <div class="col-sm-2">
-         <label for="description" class="control-label">客房介紹</label>
+         <label for="content" class="control-label">客房介紹</label>
        </div>
        <div class="col-sm-10">
-         <textarea class="form-control" id="description" name="description"></textarea>
+         <textarea class="form-control" id="content" name="content"></textarea>
        </div>
      </div>
      <div class="form-group">

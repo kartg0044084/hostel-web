@@ -21,7 +21,7 @@ require_once('../../connection/database.php');
               price = :price,
                room = :room,
                people = :people,
-                description = :description,
+                content = :content,
               updatedDate = :updatedDate WHERE productID=:productID";
     $sth = $db ->prepare($sql);
 
@@ -30,7 +30,7 @@ require_once('../../connection/database.php');
     $sth ->bindParam(":price", $_POST['price'], PDO::PARAM_INT);
     $sth ->bindParam(":room", $_POST['room'], PDO::PARAM_STR);
     $sth ->bindParam(":people", $_POST['people'], PDO::PARAM_STR);
-    $sth ->bindParam(":description", $_POST['description'], PDO::PARAM_STR);
+    $sth ->bindParam(":content", $_POST['content'], PDO::PARAM_STR);
     $sth ->bindParam(":updatedDate", $_POST['updatedDate'], PDO::PARAM_STR);
     $sth ->bindParam(":productID", $_POST['productID'], PDO::PARAM_INT);
     $sth ->execute();
@@ -124,10 +124,10 @@ require_once('../../connection/database.php');
 
      <div class="form-group">
        <div class="col-sm-2">
-         <label for="description" class="control-label">客房介紹</label>
+         <label for="content" class="control-label">客房介紹</label>
        </div>
        <div class="col-sm-10">
-         <input type="text" class="form-control" id="description" name="description" value="<?php echo $product['description']; ?>" data-error="請輸入字元" required>
+         <textarea type="text" class="form-control" id="content" name="content"><?php echo $product['content']; ?></textarea>
        </div>
      <div class="form-group">
        <div class="col-sm-10 col-sm-offset-2 text-right">
@@ -143,9 +143,8 @@ require_once('../../connection/database.php');
 
 </div>
 
-<?php include_once('../template/footer.php'); ?>
-
  </div>
+ <?php include_once('../template/footer.php'); ?>
 </div>
 
 

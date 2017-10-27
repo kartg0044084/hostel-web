@@ -2,8 +2,7 @@
 // 完成10/26
 require_once('../template/login_check.php');
 require_once('../../connection/database.php');
-print_r($_SESSION['level']);
-$limit=4;
+$limit=2;
 // 判斷目前第幾頁，若沒有page參數就預設為1
 if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
 // 計算要從第幾筆開始
@@ -25,7 +24,7 @@ $totalRows = count($news);
 <body>
 <div id="container">
  <div id="row">
-
+<div id='loading'>還沒完成</div>
 	<?php include_once('../template/nav.php'); ?>
 
 <div id="content">

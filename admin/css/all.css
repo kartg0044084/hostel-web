@@ -9414,11 +9414,11 @@ keyframes
     transform: translateX(0);
   }
 }
-/* 
+/*
 html5doctor.com Reset Stylesheet
 v1.6.1
 Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com 
+Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
 html, body, div, span, object, iframe,
@@ -9438,7 +9438,6 @@ time, mark, audio, video {
   border: 0;
   outline: 0;
   font-size: 100%;
-  vertical-align: baseline;
   background: transparent;
 }
 
@@ -9553,13 +9552,29 @@ span {
   font-family: Microsoft JhengHei;
 }
 
+#loading {
+  z-index: 1;
+  padding: 10px 10px;
+  background: #FFFFFF;
+  left: 45%;
+  top: 50%;
+  color: #000;
+  position: fixed;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 10px;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
 body {
-  background-color: #ededee;
+  background-color: #f9f9f9;
 }
 
 .top {
   display: block;
-  background-color: #2dc0a8;
+  background-color: darkgray;
   width: 100%;
   height: 50px;
 }
@@ -9573,7 +9588,9 @@ body {
 .theme {
   display: block;
   width: 100%;
-  background-color: #2cb4a0;
+  background-color: #e9ecef;
+  text-shadow: 0 0 10px black;
+  line-height: 35px;
   height: 132px;
 }
 .theme div {
@@ -9582,24 +9599,9 @@ body {
   margin: 0px auto;
 }
 .theme div p {
-  font-family: "Ubuntu", sans-serif;
-  color: #fff;
+  font-family: "Ubuntu", sans-serif, Microsoft JhengHei;
+  color: white;
   font-size: 25px;
-  text-shadow: 0px 0px 5px black;
-}
-.theme div p a {
-  background-color: #97c5f9;
-  padding: 8px 8px;
-  width: 80px;
-  height: 80px;
-  border-radius: 99em;
-  color: #fff;
-  text-decoration: none;
-  font-size: 30px;
-}
-.theme div p a:hover {
-  background-color: #aaaaaa;
-  transition: 0.5s;
 }
 .theme div h4 {
   font-family: Microsoft JhengHei;
@@ -9642,12 +9644,26 @@ body {
   width: 1137px;
   padding-bottom: 10px;
   border-bottom: 2px solid darkgray;
+  text-align: center;
 }
 #content table tbody td {
   width: 1137px;
+  padding: 10px 10px;
+  text-align: center;
+  font-family: Microsoft JhengHei;
+}
+#content table tbody td a {
+  text-decoration: none;
+  color: #282c34;
 }
 #content table tbody td .btn-info {
   margin-top: 10px;
+  color: white;
+}
+#content table tbody td ul {
+  margin-left: 50px;
+  text-align: left;
+  float: left;
 }
 #content .pagination {
   width: 252px;
@@ -9656,7 +9672,7 @@ body {
 
 #footer {
   width: 100%;
-  background-color: #309c88;
+  background-color: #868e96;
 }
 #footer div {
   display: block;
@@ -9664,7 +9680,7 @@ body {
   width: 100%;
   margin: 0px auto;
   color: white;
-  text-shadow: 0px 0px 10px black;
+  text-shadow: 0 0 10px black;
 }
 #footer div h2 {
   font-size: 36px;

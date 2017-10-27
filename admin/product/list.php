@@ -58,7 +58,7 @@ $totalRaws = count($products);
         <td>$NT: <?php echo $row['price']; ?></td>
         <td><?php echo $row['room']; ?></td>
         <td><?php echo $row['people']; ?></td>
-        <td><?php echo mb_substr( $row['description'],0,30,"utf-8")."..."; ?></td>
+        <td><?php echo mb_substr( $row['content'],0,30,"utf-8")."..."; ?></td>
         <td><a href="edit.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info">Update</a></td>
         <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>

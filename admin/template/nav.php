@@ -4,9 +4,9 @@
 
 <div class="theme">
   <div>
-    <p class="pt-5"><b>Welcome to ENJOY HAPPY </b> <img src="../../uploads/admin/<?php echo  $_SESSION['picture']; ?>" class="ml-4" style="width:50px;"></p>
+    <p class="pt-5"><b>Welcome to ENJOY HAPPY </b> <img src="../../uploads/admin/<?php echo  $_SESSION['picture']; ?>" style="width:40px;"></p>
 
-    <p><?php echo  $_SESSION['name']; ?> 您好很高興為您服務</p>
+    <p><?php echo  $_SESSION['name']; ?> 您好，請問今天需要做些甚麼嗎?</p>
   </div>
 </div>
 <header>
