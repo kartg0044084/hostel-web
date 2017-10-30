@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -6,7 +6,7 @@ Primary style
 *, *::after, *::before {
   box-sizing: border-box;
 }
-/* -------------------------------- 
+/* --------------------------------
 
 Stretchy Nav style - common to:
  - basic navigation
@@ -204,6 +204,10 @@ Stretchy Nav style - common to:
      background-size:cover;
 }
 .cd-stretchy-nav ul li:nth-of-type(7) a::after {
+  background-image: url(../img/nav/PNG/stats-bars.png);
+     background-size:cover;
+}
+.cd-stretchy-nav ul li:nth-of-type(8) a::after {
   background-image: url(../img/nav/PNG/exit.png);
      background-size:cover;
 }
@@ -309,7 +313,7 @@ Stretchy Nav style - common to:
   animation-delay: 0.25s;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 add-content navigation style
 
@@ -521,7 +525,7 @@ add-content navigation style
   transform: translateX(0);
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 edit content
 
@@ -717,7 +721,7 @@ edit content
   transform: translateX(0);
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 main content basic style
 
@@ -730,7 +734,7 @@ main content basic style
   background-color: #003c5d;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 keyframes
 

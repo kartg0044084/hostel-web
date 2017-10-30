@@ -1,5 +1,6 @@
 <?php
 session_start();
+// print_r($_SESSION['publishedDate']);
 require_once('../connection/database.php');
 if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 	$sth = $db->query("SELECT * FROM users WHERE account='".$_POST['account']."' AND password='".$_POST['password']."'");
@@ -11,9 +12,11 @@ if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 		$_SESSION['picture'] = $user['picture'];
 		$_SESSION['name'] = $user['name'];
 		$_SESSION['level'] = $user['level'];
+		$_SESSION['publishedDate'] = $_POST['publishedDate'];
+		
 		header('Location: news/list.php');
 	}else{
-		$msg = '登入錯誤，請重新登入';
+		$msg = '帳號密碼不正確，請重新登入';
 		header('Location: login.php?msg='.$msg);
 	}
 }
@@ -26,7 +29,6 @@ if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
   <link rel="stylesheet" href="login/css/all.css">
   <script  src='login/js/jquery.js'></script>
   <script  src="login/js/all.js"></script>
-
 </head>
 
 <body>
@@ -38,13 +40,15 @@ if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
       <input name="account" id="account" type="text" value="account" onfocus="this.value=''" /><!--END USERNAME-->
     <!--PASSWORD--><input name="password" id="password" type="password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
       <button type="submit" name="submit">登入</button>
-      <p>沒有會員? <span>註冊</span></p>
+
 
       <?php if(isset($_GET['msg']) && $_GET['msg'] != null){ ?>
       <div class="alert alert-success">
       <strong><?php echo $_GET['msg']; ?></strong>
     </div>
     <?php } ?>
+		<input type="hidden" class="form-control" id="publishedDate" name="publishedDate" value="<?php echo date("Y-m-d H:i:s"); ?>">
+
     <input type="hidden" name="MM_login" value="LOGIN">
     </div>
   </div>

@@ -38,7 +38,9 @@ $categories=$sth->fetchAll(PDO::FETCH_ASSOC);
         <th>分類編號</th>
         <th>房型名稱</th>
         <th>分類圖片</th>
+          <?php if ($_SESSION['level'] == 1) {?>
         <th>刪除</th>
+      <?php } ?>
       </tr>
     </thead>
 
@@ -50,9 +52,8 @@ $categories=$sth->fetchAll(PDO::FETCH_ASSOC);
           <td><a class="fancybox" rel="group" href="../../uploads/product_category/<?php echo $row['picture']; ?>" target="_blank"><img src="../../uploads/product_category/<?php echo $row['picture']; ?>" class="img-thumbnail"/><a></td>
         <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?product_categoryID=<?php echo $row['product_categoryID']; ?>" class="btn btn-info" onclick="if(!confirm ('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
-      <?php }else{ ?>
-        <td><a href="#" class="btn btn-info">無法使用</a></td>
       <?php } ?>
+
       </tr>
       <?php } ?>
     </tbody>

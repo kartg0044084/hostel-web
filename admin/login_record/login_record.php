@@ -2,14 +2,14 @@
 // 完成10/26
 require_once('../template/login_check.php');
 require_once('../../connection/database.php');
-$limit=3;
+$limit=6;
 // 判斷目前第幾頁，若沒有page參數就預設為1
 if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
 // 計算要從第幾筆開始
 $start_from = ($page-1) * $limit;
-$sth=$db->query("SELECT*FROM news ORDER BY publishedDate DESC LIMIT ".$start_from.",". $limit);
-$news=$sth->fetchAll(PDO::FETCH_ASSOC);
-$totalRows = count($news);
+$sth=$db->query("SELECT*FROM user_login_record ORDER BY publishedDate DESC LIMIT ".$start_from.",". $limit);
+$user_login_record=$sth->fetchAll(PDO::FETCH_ASSOC);
+$totalRows = count($user_login_record);
  ?>
 <!doctype html>
 <html>
@@ -29,44 +29,35 @@ $totalRows = count($news);
 
 <div id="content">
 <div class="title">
-    <h1>最新活動管理</h1>
+    <h1>登入紀錄管理</h1>
 </div>
     <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">首頁</a></li>
-    <li class="breadcrumb-item active">最新活動管理</li>
+    <li class="breadcrumb-item active">登入紀錄管理</li>
     </ol>
-
-    <a href="add.php" class="btn btn-outline-secondary">新增一筆</a>
 
   <table>
     <thead>
       <tr>
-        <th>發佈日期</th>
-        <th>標題</th>
-        <th>內容</th>
-        <th>Update</th>
-        <?php if ($_SESSION['level'] == 1) {?>
-        <th>刪除</th>
-      <?php } ?>
+        <th>登入日期</th>
+        <th>登出日期</th>
+        <th>帳號</th>
+        <th>名稱</th>
       </tr>
     </thead>
       <tbody>
-        <?php foreach($news as $row){ ?>
+        <?php foreach($user_login_record as $row){ ?>
       <tr>
         <td><?php echo $row['publishedDate'] ?></td>
-        <td><?php echo $row['title'] ?></td>
-        <td><?php echo $row['content'] ?></td>
-        <td><a href="edit.php?newsID=<?php echo $row['newsID'];?>" class="btn btn-info">Update</a></td>
-        <?php if ($_SESSION['level'] == 1) {?>
-        <td><a href="delete.php?newsID=<?php echo $row['newsID'];?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};">Delete</a></td>
-      <?php } ?>
-
+        <td><?php echo $row['enddate'] ?></td>
+        <td><?php echo $row['account'] ?></td>
+        <td><?php echo $row['name'] ?></td>
       </tr>
       <?php } ?>
     </tbody>
     </table>
     <?php  if($totalRows > 0){
-        $sth = $db->query("SELECT * FROM news ORDER BY PublishedDate DESC ");
+        $sth = $db->query("SELECT * FROM user_login_record ORDER BY publishedDate DESC ");
         $data_count = count($sth ->fetchAll(PDO::FETCH_ASSOC));
         $total_pages = ceil($data_count / $limit);
        ?>
@@ -74,7 +65,7 @@ $totalRows = count($news);
       <ul class="pagination">
           <?php   if($page > 1){ ?>
         <li class="page-item">
-          <a class="page-link" href="list.php?page=<?php echo $page-1;?>">Previous</a>
+          <a class="page-link" href="login_record.php?page=<?php echo $page-1;?>">Previous</a>
         </li>
         <?php }else{ ?>
           <li>
@@ -83,12 +74,12 @@ $totalRows = count($news);
           <?php } ?>
           <?php for ($i=1; $i<=$total_pages; $i++) { ?>
         <li class="page-item">
-          <a class="page-link" href="list.php?page=<?php echo $i;?>"><?php echo $i;?></a>
+          <a class="page-link" href="login_record.php?page=<?php echo $i;?>"><?php echo $i;?></a>
         </li>
         <?php } ?>
       <?php if($page < $total_pages){ ?>
         <li class="page-item">
-          <a class="page-link" href="list.php?page=<?php echo $page+1;?>">Next</a>
+          <a class="page-link" href="login_record.php?page=<?php echo $page+1;?>">Next</a>
         </li>
         <?php }else{ ?>
           <li>

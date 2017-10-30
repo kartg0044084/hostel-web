@@ -46,7 +46,9 @@ $totalRaws = count($products);
         <th>可住人數</th>
         <th>說明</th>
         <th>Update</th>
+        <?php if ($_SESSION['level'] == 1) {?>
         <th>刪除</th>
+      <?php } ?>
       </tr>
     </thead>
       <tbody>
@@ -62,9 +64,8 @@ $totalRaws = count($products);
         <td><a href="edit.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info">Update</a></td>
         <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?product_categoryID=<?php echo $row['product_categoryID']; ?>&productID=<?php echo $row['productID'];?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
-      <?php }else{ ?>
-        <td><a href="#" class="btn btn-info">無法使用</a></td>
       <?php } ?>
+
         <!-- 此處容易忘記 -->
       </tr>
         <?php } ?>

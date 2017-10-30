@@ -4,7 +4,7 @@
 
 <div class="theme">
   <div>
-    <p class="pt-5"><b>Welcome to ENJOY HAPPY </b> <img src="../../uploads/admin/<?php echo  $_SESSION['picture']; ?>" style="width:40px;"></p>
+    <p class="pt-5"><b>Welcome to ENJOYING </b> <img src="../../uploads/admin/<?php echo  $_SESSION['picture']; ?>" style="width:35px;"></p>
 
     <p><?php echo  $_SESSION['name']; ?> 您好，請問今天需要做些甚麼嗎?</p>
   </div>
@@ -21,8 +21,18 @@
     <li><a href="../product_category/list.php"><span>訂房分類管理</span></a></li>
     <li><a href="#"><span>訂單管理</span></a></li>
     <li><a href="#"><span>會員管理</span></a></li>
+    <li><a href="../login_record/login_record.php"><span>紀錄查詢</span></a></li>
     <li><a href="../logout.php"><span>登出</span></a></li>
   </ul>
   <span aria-hidden="true" class="stretchy-nav-bg"></span>
 </nav>
 </header>
+<!-- loading -->
+  <div id="loading">
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  </div>
+<!-- loading -->

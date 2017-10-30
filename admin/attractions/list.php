@@ -40,7 +40,9 @@ $attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
         <th>行程圖片</th>
         <th>行程價錢</th>
         <th>行程說明</th>
+        <?php if ($_SESSION['level'] == 1) {?>
         <th>刪除</th>
+      <?php } ?>
       </tr>
     </thead>
 
@@ -54,8 +56,6 @@ $attractions=$sth->fetchAll(PDO::FETCH_ASSOC);
         <td><?php echo $row['description']; ?></td>
         <?php if ($_SESSION['level'] == 1) {?>
         <td><a href="delete.php?attractionsID=<?php echo $row['attractionsID']; ?>" class="btn btn-info" onclick="if(!confirm('是否刪除此筆資料？')){return false;};" class="btn btn-default">Delete</a></td>
-      <?php }else{ ?>
-        <td><a href="#" class="btn btn-info">無法使用</a></td>
       <?php } ?>
       </tr>
       <?php } ?>
