@@ -1,3 +1,14 @@
+<?php
+require_once('connection/database.php');
+$limit=3;
+// 判斷目前第幾頁，若沒有page參數就預設為1
+if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
+// 計算要從第幾筆開始
+$start_from = ($page-1) * $limit;
+$sth=$db->query("SELECT*FROM news ORDER BY publishedDate DESC LIMIT ".$start_from.",". $limit);
+$news=$sth->fetchAll(PDO::FETCH_ASSOC);
+$totalRows = count($news);
+ ?>
 <!doctype html>
 <html>
 <head>
@@ -27,10 +38,12 @@
  <div class="overlay" id="overlay">
    <nav class="overlay-menu">
      <ul>
-       <li ><a href="#">首頁</a></li>
-       <li><a href="#">加入會員</a></li>
-       <li><a href="#">會員登入</a></li>
-       <li><a href="#">購物車</a></li>
+       <li><a href="#">首頁</a></li>
+       <li><a href="#">民宿簡介</a></li>
+       <li><a href="#">週邊景點</a></li>
+       <li><a href="#">客房介紹</a></li>
+       <li><a href="#">線上訂房系統</a></li>
+       <li><a href="#">套裝行程</a></li>
      </ul>
    </nav>
  </div>
@@ -66,44 +79,24 @@
     </a>
   </div>
 
-<div id="menu">
-  <ul>
-    <li><a href="#">首頁</a></li>
-    <li><a href="#">民宿簡介</a></li>
-    <li><a href="#">週邊景點</a></li>
-    <li><a href="#">客房介紹</a></li>
-    <li><a href="#">線上訂房系統</a></li>
-    <li><a href="#">套裝行程</a></li>
-  </ul>
-</div>
-
 <div id="content">
-  <div class="col-lg-12">
+
 <table>
+      <?php foreach($news as $row){ ?>
     <tr>
-      <td><a href="#"> 2017/06/02 ~ 2017/12/31　清境免費接駁服務</a></td>
-      <td><a href="#"> 2017/01/01 ~ 2017/12/31　合歡山觀光巴士旅遊專車</a></td>
-      <td><a href="#"> 2017/01/01 ~ 2017/12/31　續住送一晚晚餐(小火鍋)</a></td>
-      <td><a href="#"> 2017/01/01 ~ 2017/12/31　森之戀晚餐-小火鍋一鍋300元</a></td>
-      <td><a href="#"> 2017/01/01 ~ 2017/12/31　平日住宿即贈送小瑞士花園門票</a></td>
+      <td><a href="#"> <?php echo $row['publishedDate'] ?> <?php echo $row['title'] ?> <?php echo mb_substr( $row['content'],0,40,"utf-8")."..."; ?></a></td>
     </tr>
+    <?php } ?>
   </table>
-  </div>
-  <div class="col-lg-12">
+
 <div class="address">
-  <h3>花蓮縣民宿479號</h3>
   <p>連絡市話:0234567891</p>
   <p>連絡手機:0901234567</p>
 </div>
-</div>
+
 </div>
 
-<div id="Introduction">
-  <div class="text">
-    <h1>享樂渡假民宿</h1>
-    <p>順著台十四甲線進入山中小鎮－清境，鄰近清境地區各大景點，擁有地勢優越、環境優美的絕佳觀景位置，讓您輕鬆享受乍現日出、微暈夕陽、觀星賞月等山中美景～～</p>
-  </div>
-</div>
+<div id="Introduction"></div>
 
 <div id="room">
     <p>房間一覽</p>
@@ -139,33 +132,42 @@
     </div>
 </div>
 
+ <div id="footer">
+<div>
 
+  <div class="list">
+  <ul>
+    <li><a href="#">開店動機</a></li>
+    <li><a href="#">店名由來</a></li>
+    <li><a href="#">交通資訊</a></li>
+    <li><a href="#">台東市區</a></li>
+    <li><a href="#">台東縱谷</a></li>
+    <li><a href="#">東海岸線</a></li>
+    <li><a href="#">訂房說明</a></li>
+    <li><a href="#">貼心服務</a></li>
+    <li><a href="#">訂房叮嚀</a></li>
+    <li><a href="#" class="icon-google2"> google</a></li>
+    <li><a href="#" class="icon-facebook2"> facebook</a></li>
+    <li><a href="#" class="icon-twitter"> twitter</a></li>
+  </ul>
+  </div>
+
+
+
+  <div class="mape">
+   <img src="img/O1T1U65Y6U.png" alt="">
+   <p>享樂民宿</p>
+  <p>地址：南投縣仁愛鄉大同村博望巷9-7號</p>
+  <p>松崗派出所：049</p>
+  </div>
+
+
+</div>
+</div>
  </div>
 </div>
 <!-- 左側訂房商標 -->
-<div id="Reservation" class="icon-home"><a href="#"> 訂房，空房查詢</a></div>
+<div id="Reservation" class="icon-home"><a href="#"> 訂房 空房查詢</a></div>
 <!-- 左側訂房商標 -->
-<!-- loading -->
-    <div aria-busy="true" aria-label="Loading" role="progressbar" class="container">
-    <div class="swing">
-      <div class="swing-l"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div class="swing-r"></div>
-    </div>
-    <div class="shadow">
-      <div class="shadow-l"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div class="shadow-r"></div>
-    </div>
-   </div>
-<!-- loading -->
 </body>
 </html>

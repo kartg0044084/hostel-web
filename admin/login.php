@@ -1,6 +1,6 @@
 <?php
 session_start();
-// print_r($_SESSION['publishedDate']);
+print_r($_SESSION['recordID']);
 require_once('../connection/database.php');
 if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 	$sth = $db->query("SELECT * FROM users WHERE account='".$_POST['account']."' AND password='".$_POST['password']."'");
@@ -8,12 +8,21 @@ if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 	$has_user = count($user);
 	// php count 統計陣列
 	if (isset($user) && $user != null){
+		$_SESSION['userID'] = $user['userID'];
 		$_SESSION['account'] = $user['account'];
 		$_SESSION['picture'] = $user['picture'];
 		$_SESSION['name'] = $user['name'];
 		$_SESSION['level'] = $user['level'];
 		$_SESSION['publishedDate'] = $_POST['publishedDate'];
-		
+
+		$sql= "INSERT INTO user_login_record(account, name, publishedDate, userID) VALUES ( :account, :name, :publishedDate, :userID)";
+		$sth = $db ->prepare($sql);
+		$sth ->bindParam(":userID", $_SESSION['userID'], PDO::PARAM_INT);
+		$sth ->bindParam(":account", $_SESSION['account'], PDO::PARAM_STR);
+		$sth ->bindParam(":name", $_SESSION['name'], PDO::PARAM_STR);
+		$sth ->bindParam(":publishedDate", $_SESSION['publishedDate'], PDO::PARAM_STR);
+		$sth -> execute();
+
 		header('Location: news/list.php');
 	}else{
 		$msg = '帳號密碼不正確，請重新登入';

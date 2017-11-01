@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?2l2vi0');
-  src:  url('fonts/icomoon.eot?2l2vi0#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?2l2vi0') format('truetype'),
-    url('fonts/icomoon.woff?2l2vi0') format('woff'),
-    url('fonts/icomoon.svg?2l2vi0#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?bblyn7');
+  src:  url('fonts/icomoon.eot?bblyn7#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?bblyn7') format('truetype'),
+    url('fonts/icomoon.woff?bblyn7') format('woff'),
+    url('fonts/icomoon.svg?bblyn7#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,18 +27,15 @@
 .icon-home:before {
   content: "\e900";
 }
-.icon-cart:before {
-  content: "\e93a";
+.icon-google2:before {
+  content: "\ea89";
 }
-.icon-users:before {
-  content: "\e972";
+.icon-facebook2:before {
+  content: "\ea91";
 }
-.icon-user-plus:before {
-  content: "\e973";
+.icon-twitter:before {
+  content: "\ea96";
 }
-.icon-user-check:before {
-  content: "\e975";
-}
-.icon-menu:before {
-  content: "\e9bd";
+.icon-github:before {
+  content: "\eab0";
 }
