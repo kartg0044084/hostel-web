@@ -7,7 +7,6 @@ if (isset($_GET["page"])) {$page = $_GET["page"]; } else {$page=1; };
 $start_from = ($page-1) * $limit;
 $sth=$db->query("SELECT*FROM news ORDER BY publishedDate DESC LIMIT ".$start_from.",". $limit);
 $news=$sth->fetchAll(PDO::FETCH_ASSOC);
-$totalRows = count($news);
  ?>
 <!doctype html>
 <html>
@@ -16,19 +15,15 @@ $totalRows = count($news);
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>享樂民宿</title>
-<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/all.css">
 <script src="js/jquery.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <script src="js/all.js"></script>
 <script src="js/wow.min.js"></script>
+<script src="js/jquery.flexslider.js"></script>
 </head>
 
 <body>
-<div id="container" -fluid>
- <div id="row">
           <!-- nav bar -->
    <div class="button_container" id="toggle">
    <span class="top"></span>
@@ -38,8 +33,8 @@ $totalRows = count($news);
  <div class="overlay" id="overlay">
    <nav class="overlay-menu">
      <ul>
-       <li><a href="#">首頁</a></li>
-       <li><a href="#">民宿簡介</a></li>
+       <li><a href="index.php">首頁</a></li>
+       <li><a href="frontend/about.php?pageID=1">民宿簡介</a></li>
        <li><a href="#">週邊景點</a></li>
        <li><a href="#">客房介紹</a></li>
        <li><a href="#">線上訂房系統</a></li>
@@ -50,50 +45,42 @@ $totalRows = count($news);
           <!-- nav bar -->
   <div id="top">
     <div class="logo"></div>
+    <ul>
+      <li><a href="#">加入會員</a></li>
+      <li><a href="#">會員登入</a></li>
+      <li><a href="#">會員專區</a></li>
+    </ul>
   </div>
 
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="img/pc/123.jpg" alt="First slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="img/pc/456.jpg" alt="Second slide">
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="img/pc/789.jpg" alt="Third slide">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+  <div class="flexslider">
+      <ul class="slides">
+          <li><img src="img/pc/123.jpg" alt=""></li>
+          <li><img src="img/pc/456.jpg" alt=""></li>
+          <li><img src="img/pc/789.jpg" alt=""></li>
+      </ul>
   </div>
 
 <div id="content">
-
+  <h6><a href="frontend/news.php">最新消息</a></h6>
 <table>
       <?php foreach($news as $row){ ?>
     <tr>
-      <td><a href="#"> <?php echo $row['publishedDate'] ?> <?php echo $row['title'] ?> <?php echo mb_substr( $row['content'],0,40,"utf-8")."..."; ?></a></td>
+      <td><a href="frontend/singlepost.php?newsID=<?php echo $row['newsID'];?>"> <?php echo $row['publishedDate'] ?> <?php echo $row['title'] ?> <?php echo mb_substr( $row['content'],0,40,"utf-8")."..."; ?></a></td>
     </tr>
     <?php } ?>
   </table>
-
 <div class="address">
-  <p>連絡市話:0234567891</p>
-  <p>連絡手機:0901234567</p>
-</div>
+   <h5>貼心叮嚀</h5>
+  <p>   ■	公共設施：冰箱、飲水機、無線寬頻上網(需自備電腦)。</p>
+  <p>   ■	提供自行車使用服務。</p>
+  <p>   ■	提供第四台有線頻道電視。</p>
+  <p>   ■	無提供接送服務、早餐服務。</p>
+  <p>   ■	代售海洋公園、兆豐農場門票。</p>
+  <p>   ■	代辦賞鯨、溯溪、泛舟等套裝行程。</p>
+  <p>   ■	代辦機車租賃服務。</p>
+  <p>   ■	提前到或退房皆可行李寄放服務，但貴重物品請隨身攜帶，以免遺失。</p>
 
+</div>
 </div>
 
 <div id="Introduction"></div>
@@ -131,10 +118,9 @@ $totalRows = count($news);
       </div>
     </div>
 </div>
-
+<div style="clear:both;"></div>
  <div id="footer">
 <div>
-
   <div class="list">
   <ul>
     <li><a href="#">開店動機</a></li>
@@ -151,23 +137,17 @@ $totalRows = count($news);
     <li><a href="#" class="icon-twitter"> twitter</a></li>
   </ul>
   </div>
-
-
-
   <div class="mape">
    <img src="img/O1T1U65Y6U.png" alt="">
    <p>享樂民宿</p>
-  <p>地址：南投縣仁愛鄉大同村博望巷9-7號</p>
+  <p>地址：宜蘭縣仁愛鄉大同村博望巷9-7號</p>
   <p>松崗派出所：049</p>
   </div>
+</div>
+</div>
 
-
-</div>
-</div>
- </div>
-</div>
 <!-- 左側訂房商標 -->
-<div id="Reservation" class="icon-home"><a href="#"> 訂房 空房查詢</a></div>
+<div id="Reservation" class="icon-home"><a href="#">空房查詢</a></div>
 <!-- 左側訂房商標 -->
 </body>
 </html>
