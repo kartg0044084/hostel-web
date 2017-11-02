@@ -1,6 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION['recordID']);
+// print_r($_SESSION['recordID']);
 require_once('../connection/database.php');
 if (isset($_POST['MM_login']) && $_POST['MM_login'] == 'LOGIN') {
 	$sth = $db->query("SELECT * FROM users WHERE account='".$_POST['account']."' AND password='".$_POST['password']."'");

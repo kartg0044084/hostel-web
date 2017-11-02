@@ -2,45 +2,34 @@
 require_once('../connection/database.php');
 $sth=$db->query("SELECT*FROM news WHERE newsID=".$_GET['newsID']);
 $news=$sth->fetch(PDO::FETCH_ASSOC);
-$sth2=$db->query("SELECT*FROM news ORDER BY publishedDate DESC");
-$latest_news=$sth2->fetch(PDO::FETCH_ASSOC);
-
 ?>
 <!doctype html>
 <!-- Website template by freewebsitetemplates.com -->
+<!doctype html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>singlepost - Cake House</title>
-	<?php require_once("template/files.php"); ?>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最新消息-享樂民宿</title>
+<?php require_once("template/files.php"); ?>
 </head>
 <body>
-	<div id="page">
-		<?php require_once("template/header.php"); ?>
-		<div id="body">
-			<div class="header">
-				<div>
-					<h1>Single Post</h1>
-				</div>
-			</div>
-			<div class="singlepost">
-				<div class="featured">
-					<h1><?php echo $news['title']; ?></h1>
-					<span><?php echo $news['publishedDate']; ?></span>
-					<p><?php echo $news['content']; ?></p>
-					<a href="news.php" class="load">back to blog</a>
-				</div>
-				<div class="sidebar">
-					<h1>最新消息</h1>
-					<h2><?php echo $latest_news['title']; ?></h2>
-					<span><?php echo $latest_news['publishedDate']; ?></span>
-					<p><?php echo $latest_news['content']; ?></p>
-					<a href="singlepost.php?newsID=<?php echo $latest_news['newsID'];?>" class="more">Read More</a>
-				</div>
-			</div>
-		</div>
-		<?php require_once("template/footer.php"); ?>
-	</div>
+<?php require_once("template/header.php"); ?>
+
+<div id="disviewrow">
+
+	<div class="panel-heading"><?php echo $news['title'] ?></div>
+	<div class="datebor"><?php echo $news['publishedDate'] ?></div>
+	<div class="dis">優惠內容</div>
+	<div class="dis_content"><?php echo $news['content'] ?></div>
+	<a href="../index.php">回首頁</a>
+	<a href="news.php">回上一頁</a>
+</div>
+
+
+<div style="clear:both;"></div>
+<?php require_once("template/footer.php"); ?>
 </body>
+
 </html>
