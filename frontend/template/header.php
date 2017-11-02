@@ -9,7 +9,11 @@
 <nav class="overlay-menu">
 <ul>
 <li><a href="../index.php">首頁</a></li>
+<<<<<<< HEAD
 <li><a href="about.php?pageID=1">民宿簡介</a></li>
+=======
+<li><a href="#">民宿簡介</a></li>
+>>>>>>> 1ca6ea0b3d445f5ea4b0c09f45babe98a1a366c6
 <li><a href="#">週邊景點</a></li>
 <li><a href="#">客房介紹</a></li>
 <li><a href="#">線上訂房系統</a></li>
